@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { cardContext } from "../../context/cartContext";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
-import { CarItem, CartContainer, CartFooter } from "./style";
+import CartContainer from "./CardContainer";
 import Toast from "../../components/Toast";
+import CarItem from "./CarITem";
+import CartFooter from "./CartFooter";
 
 const Cart = () => {
   const [amount, setAmount] = useState(0);
