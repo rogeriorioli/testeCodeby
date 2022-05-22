@@ -2,8 +2,8 @@ import React from "react";
 
 import { ToastContainer } from "./style";
 
-const Toast = ({ message }) => {
-  return <ToastContainer>{message}</ToastContainer>;
+const Toast = ({ children }) => {
+  return <ToastContainer>{children}</ToastContainer>;
 };
 
 export default Toast;

@@ -7,6 +7,7 @@ const CartFooter = styled.div`
     span {
       font-weight: bold;
     }
+
 `
 
 export default CartFooter
