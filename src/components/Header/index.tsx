@@ -18,7 +18,16 @@ const Header = () => {
   return (
     <HeaderContainer items={cart.item.length.toString()}>
       <div className="logo">
-        <Image src="/images/logo.svg" width={115.28} height={60} alt="logo" />
+        <Link href="/">
+          <a>
+            <Image
+              src="/images/logo.svg"
+              width={115.28}
+              height={60}
+              alt="logo"
+            />
+          </a>
+        </Link>
       </div>
       <div className="cart">
         <Link href="/cart">
