@@ -7,6 +7,7 @@ export const CardContainer = styled.div`
      padding: 15px;
      flex-direction: column;
      justify-content: stretch;
+     position: relative;
      @media screen and (max-width: 768px) {
        width: 48%;
        margin : 1%;

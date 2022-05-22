@@ -10,6 +10,10 @@ export const HeaderContainer = styled.header<CartSyleProps>`
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ebdfdf;
+    position: sticky;
+    z-index: 9999;
+    background-color: #fff;
+    top: 0;
     .cart {
       position: relative;
       &::before {

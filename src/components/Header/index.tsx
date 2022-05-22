@@ -1,9 +1,4 @@
-import React, {
-  useContext,
-  useEffect,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import { HeaderContainer } from "./style";
 import { cardContext } from "../../context/cartContext";

@@ -22,7 +22,6 @@ const Card = ({ imageUrl, name, price, listPrice, children }: CardPros) => {
           alt={name}
           src={imageUrl}
           layout="responsive"
-          blurDataURL={imageUrl}
           loading="lazy"
           width={300}
           height={350}
