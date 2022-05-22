@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-const initialValues = {
+export const initialValues = {
   item: [],
   setCart: (item: {}) => {},
 };

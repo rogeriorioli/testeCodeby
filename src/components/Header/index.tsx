@@ -11,7 +11,7 @@ const Header = () => {
   }, [cart.item]);
 
   return (
-    <HeaderContainer items={cart.item.length.toString()}>
+    <HeaderContainer items={!cart.item ? "0" : cart.item.length.toString()}>
       <div className="logo">
         <Link href="/">
           <a>

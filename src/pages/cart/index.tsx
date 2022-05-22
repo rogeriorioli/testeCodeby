@@ -1,5 +1,5 @@
-import { useCallback, useContext, useEffect, useState } from "react";
-import { cardContext } from "../../context/cartContext";
+import { useContext, useEffect, useState } from "react";
+import { cardContext, initialValues } from "../../context/cartContext";
 import Image from "next/image";
 import CurrencyFormat from "react-currency-format";
 import CartContainer from "./CardContainer";
@@ -7,11 +7,12 @@ import Toast from "../../components/Toast";
 import CarItem from "./CarITem";
 import CartFooter from "./CartFooter";
 import Link from "next/link";
+import Button from "../../components/Button";
 
 const Cart = () => {
   const [amount, setAmount] = useState<number>(0);
   const [freeShip, setFreeShip] = useState<number>(0);
-  const { item } = useContext(cardContext);
+  const { item, setCart } = useContext(cardContext);
 
   useEffect(() => {
     if (item.length > 0) {
@@ -23,33 +24,38 @@ const Cart = () => {
     }
   }, [item]);
 
+  const checkoutCart = () => {
+    setCart(initialValues.item);
+  };
+  if (item.length <= 0) return <p>Seu carrinho está vazio</p>;
   return (
     <CartContainer>
-      {item.map((item) => (
-        <CarItem key={item.uniqueId}>
-          <div className="image-container">
-            <Image
-              src={item.imageUrl}
-              alt={item.name}
-              width={100}
-              height={150}
-            />
-          </div>
-          <div>
-            <h2>{item.name}</h2>
-            <span>
-              R$
-              <CurrencyFormat
-                value={item.price}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"R$"}
-                format="#,##"
+      {item.length > 0 &&
+        item.map((item) => (
+          <CarItem key={item.uniqueId}>
+            <div className="image-container">
+              <Image
+                src={item.imageUrl}
+                alt={item.name}
+                width={100}
+                height={150}
               />
-            </span>
-          </div>
-        </CarItem>
-      ))}
+            </div>
+            <div>
+              <h2>{item.name}</h2>
+              <span>
+                R$
+                <CurrencyFormat
+                  value={item.price}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"R$"}
+                  format="#,##"
+                />
+              </span>
+            </div>
+          </CarItem>
+        ))}
       {amount < 999 ? (
         <Toast>
           <>
@@ -70,9 +76,10 @@ const Cart = () => {
         </Toast>
       ) : (
         <Toast>
-          <>Que legal tu tens frete grátis</>
+          <>Que legal sua compra tem frete grátis</>
         </Toast>
       )}
+
       <CartFooter>
         <>
           <span>
@@ -97,6 +104,7 @@ const Cart = () => {
           </span>
         </>
       </CartFooter>
+      <Button text="Finalizar Compra" onClick={checkoutCart} />
     </CartContainer>
   );
 };
