@@ -30,32 +30,31 @@ const Cart = () => {
   if (item.length <= 0) return <p>Seu carrinho está vazio</p>;
   return (
     <CartContainer>
-      {item.length > 0 &&
-        item.map((item) => (
-          <CarItem key={item.uniqueId}>
-            <div className="image-container">
-              <Image
-                src={item.imageUrl}
-                alt={item.name}
-                width={100}
-                height={150}
+      {item.map((item) => (
+        <CarItem key={item.uniqueId}>
+          <div className="image-container">
+            <Image
+              src={item.imageUrl}
+              alt={item.name}
+              width={100}
+              height={150}
+            />
+          </div>
+          <div>
+            <h2>{item.name}</h2>
+            <span>
+              R$
+              <CurrencyFormat
+                value={item.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"R$"}
+                format="#,##"
               />
-            </div>
-            <div>
-              <h2>{item.name}</h2>
-              <span>
-                R$
-                <CurrencyFormat
-                  value={item.price}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"R$"}
-                  format="#,##"
-                />
-              </span>
-            </div>
-          </CarItem>
-        ))}
+            </span>
+          </div>
+        </CarItem>
+      ))}
       {amount < 999 ? (
         <Toast>
           <>
@@ -70,13 +69,13 @@ const Cart = () => {
             &nbsp; para ter frete grátis! &nbsp;
             <br />
             <Link href="/">
-              <a>adicionar mais item</a>
+              <a>adicionar mais items</a>
             </Link>
           </>
         </Toast>
       ) : (
         <Toast>
-          <>Que legal sua compra tem frete grátis</>
+          <>Parabéns sua compra tem frete grátis</>
         </Toast>
       )}
 
